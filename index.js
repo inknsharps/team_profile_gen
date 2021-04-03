@@ -1,13 +1,16 @@
 // Import variables
 const classes = require("./lib/classes.js");
 const ask = require("./lib/questions.js");
+const templates = require("./src/renderhtml.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
 // Employee objects array
-let employeeProfiles = [];
+let employeeObjects = [];
 // Employee data array that will get values pushed into it from the prompts
 let employeeData = [];
+// Declare employee cards array
+let employeeCards = [];
 
 // Function to make a new object class for each role
 function makeProfile(role, name, id, email, extra){
@@ -60,9 +63,11 @@ async function askInit(){
                 if (error) throw error;
             })
     }
+
     // Push the new employee to the employeeData
     employeeData.push(newEmployee);
     console.log("Current employee array is:", employeeData);
+
     // Ask the user if they would like to add another employee, and loops this function if they say yes
     await inquirer.prompt(ask.addAnotherEmployee)
         .then((response) => {
@@ -70,12 +75,28 @@ async function askInit(){
                 askInit();
             } else {
                 console.log("Generating employee profiles...");
-                // For loop that makes a new employee class object based on the data in employeeData, and pushes it to the employeeProfiles array
+                // For loop that makes a new employee class object based on the data in employeeData, and pushes it to the employeeObjects array
                 for (let i = 0; i < employeeData.length; i++){
                     const newProfile = makeProfile(employeeData[i].employee_role, employeeData[i].employee_name, employeeData[i].employee_id, employeeData[i].employee_email, employeeData[i].employee_extra)
-                    employeeProfiles.push(newProfile);
+                    employeeObjects.push(newProfile);
                 }
-                console.log(employeeProfiles)
+                console.log(employeeObjects);
+                // For of statement that iterates through the array of employee objects, and runs the renderTeamCards function, and pushes the returned card into the employeeCards array
+                for (const index of employeeObjects){
+                    if (index.role === "Manager"){
+                        let card = templates.renderTeamCards(index.name, index.role, index.id, index.email, index.officeNumber);
+                        employeeCards.push(card);
+                    }
+                    if (index.role === "Engineer"){
+                        let card = templates.renderTeamCards(index.name, index.role, index.id, index.email, index.github);
+                        employeeCards.push(card);
+                    }
+                    if (index.role === "Intern"){
+                        let card = templates.renderTeamCards(index.name, index.role, index.id, index.email, index.school);
+                        employeeCards.push(card);
+                    }
+                }
+                console.log(employeeCards);
             }
         })
         .catch((error) => {
