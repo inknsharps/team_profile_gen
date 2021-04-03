@@ -2,6 +2,7 @@
 const classes = require("./lib/classes.js");
 const ask = require("./lib/questions.js");
 const inquirer = require("inquirer");
+const fs = require("fs");
 
 // Employee objects array
 let employeeProfiles = [];
