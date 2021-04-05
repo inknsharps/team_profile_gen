@@ -1,7 +1,8 @@
 // Import variables
 const classes = require("./lib/classes.js");
 const ask = require("./lib/questions.js");
-const templates = require("./src/renderhtml.js");
+const htmlTemplates = require("./src/renderhtml.js");
+const cssTemplate = require("./src/rendercss.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
@@ -81,13 +82,13 @@ async function askInit(){
                 for (const index of employeeObjects){
                     switch (index.role){
                         case "Manager":
-                            employeeCards.push(templates.renderTeamCards(index.name, index.role, index.id, index.email, index.officeNumber));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, index.id, index.email, index.officeNumber));
                             break;
                         case "Engineer":
-                            employeeCards.push(templates.renderTeamCards(index.name, index.role, index.id, index.email, index.github));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, index.id, index.email, index.github));
                             break;
                         case "Intern":
-                            employeeCards.push(templates.renderTeamCards(index.name, index.role, index.id, index.email, index.school));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, index.id, index.email, index.school));
                             break;
                     }
                 }
@@ -95,9 +96,11 @@ async function askInit(){
 
                 // Join together the employeeCards array data, and make a HTML file from that data
                 let employeeCardsHTML = employeeCards.join("");
-                let finalHTMLData = templates.renderBoilerplateHTML(employeeCardsHTML);
+                let finalHTMLData = htmlTemplates.renderBoilerplateHTML(employeeCardsHTML);
                 fs.writeFileSync("./dist/teams.html", finalHTMLData);
                 console.log("File written to ./dist/teams.html !");
+                fs.writeFileSync("./dist/style.css", cssTemplate.cssStyling);
+                console.log("File written to ./dist/style.css !");
             }
         })
         .catch((error) => {
