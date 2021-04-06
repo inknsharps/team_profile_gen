@@ -1,5 +1,9 @@
 // Import variables
 const classes = require("./lib/classes.js");
+const Manager = require("./lib/manager.js");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
+
 const ask = require("./lib/questions.js");
 const htmlTemplates = require("./src/renderhtml.js");
 const cssTemplate = require("./src/rendercss.js");
@@ -17,11 +21,11 @@ let employeeCards = [];
 function makeProfile(role, name, id, email, extra){
     switch (role){
         case "Manager":
-            return new classes.Manager(name, id, email, extra);
+            return new Manager(name, id, email, extra);
         case "Engineer":
-            return new classes.Engineer(name, id, email, extra);
+            return new Engineer(name, id, email, extra);
         case "Intern":
-            return new classes.Intern(name, id, email, extra);
+            return new Intern(name, id, email, extra);
     }
 }
 
@@ -82,13 +86,13 @@ async function askInit(){
                 for (const index of employeeObjects){
                     switch (index.role){
                         case "Manager":
-                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, index.id, index.email, index.officeNumber));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: ${index.email}`, `Office: ${index.officeNumber}`));
                             break;
                         case "Engineer":
-                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, index.id, index.email, index.github));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: ${index.email}`, `GitHub: ${index.github}`));
                             break;
                         case "Intern":
-                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, index.id, index.email, index.school));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: ${index.email}`, `School: ${index.school}`));
                             break;
                     }
                 }
