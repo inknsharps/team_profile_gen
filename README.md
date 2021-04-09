@@ -19,7 +19,7 @@ This is a node.js application that generates a team profile HTML page from input
 Once installed, you can run the program by navigating to the repository folder in the command line and run:
 
 ```
-    node index.js
+    npm start
 ```
 
 You will then be prompted in the command line for all the info about the employees you are planning to add. Once you are finished with the prompts, it will generate a HTML and CSS file under the `./dist/` folder with all your employees and their respective information.
