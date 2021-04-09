@@ -6,7 +6,7 @@ This is a node.js application that generates a team profile HTML page from input
 
 ## Installation
 
-1) Make sure that you have [node.js](https://nodejs.dev/) install on your local machine.
+1) Make sure that you have [node.js](https://nodejs.dev/) installed on your local machine.
 2) Clone the repository/download the source files onto your local machine.
 3) Navigate to the repository folder in the command line, and run the following to install all dependencies:
 
@@ -24,7 +24,7 @@ Once installed, you can run the program by navigating to the repository folder i
 
 You will then be prompted in the command line for all the info about the employees you are planning to add. Once you are finished with the prompts, it will generate a HTML and CSS file under the `./dist/` folder with all your employees and their respective information.
 
-A video demonstration of the application can be found [here](#).
+A video demonstration of the application can be found [here](https://youtu.be/brpDu7tZ3Hg).
 
 ## Tests
 

@@ -8,6 +8,7 @@ const htmlTemplates = require("./src/renderhtml.js");
 const cssTemplate = require("./src/rendercss.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { Console } = require("console");
 
 // Employee objects array
 let employeeObjects = [];
@@ -28,8 +29,21 @@ function makeProfile(role, name, id, email, extra){
     }
 }
 
-// Terminal prompt logic flow
-async function askInit(){
+// Terminal prompt logic for the first manager upon initialization, and pushes it to the employeeData array
+async function askManager(){
+    console.log("Please answer the following for the first manager...")
+    let newManager = await inquirer.prompt(ask.initQuestions);
+    newManager.employee_role = "Manager";
+    await inquirer.prompt(ask.managerQuestion)
+        .then((response) => {
+            newManager.employee_extra = response.employee_office;
+        });
+    employeeData.push(newManager);
+}
+
+// Terminal prompt logic flow for employees in general
+async function askGeneral(){
+    console.log("Please answer the following to add more employees...");
     // Set the returned inquirer prompt object to const newEmployee
     const newEmployee = await inquirer.prompt(ask.questions);
 
@@ -71,7 +85,7 @@ async function askInit(){
     await inquirer.prompt(ask.addAnotherEmployee)
         .then((response) => {
             if (response.addAnother === true){
-                askInit();
+                askGeneral();
             } else {
                 console.log("Generating employee profiles...");
                 
@@ -111,4 +125,9 @@ async function askInit(){
         })
 }
 
-askInit();
+async function init(){
+    await askManager();
+    askGeneral();
+}
+
+init();
