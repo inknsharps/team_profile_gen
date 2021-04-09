@@ -2,6 +2,10 @@ const Employee = require("../lib/employee.js");
 
 describe("Employee", () => {
     describe("Employee Class Properties and Methods", () => {
+        it("Should be an instance of the Employee class when initialized with new.", () => {
+            const employee = new Employee("David", "1", "david@email.com");
+            expect(employee instanceof Employee).toBeTruthy();
+        })
         it("Should have properites of name, id, email, and the default employee role.", () => {
             const employee = new Employee("David", "1", "david@email.com");
             expect(employee.name).toEqual("David");

@@ -2,6 +2,10 @@ const Engineer = require("../lib/engineer.js");
 
 describe("Engineer", () => {
     describe("Engineer Class Properties and Methods", () => {
+        it("Should be an instance of the Engineer class when initialized with new.", () => {
+            const employee = new Engineer("David", "1", "david@email.com", "dave_dash");
+            expect(employee instanceof Engineer).toBeTruthy();
+        })
         it("Should have properites of name, id, email, the engineer role, and GitHub username.", () => {
             const employee = new Engineer("David", "1", "david@email.com", "dave_dash");
             expect(employee.name).toEqual("David");

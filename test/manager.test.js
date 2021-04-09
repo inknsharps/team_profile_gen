@@ -2,6 +2,10 @@ const Manager = require("../lib/manager.js");
 
 describe("Manager", () => {
     describe("Manager Class Properties and Methods", () => {
+        it("Should be an instance of the Manager class when initialized with new.", () => {
+            const employee = new Manager("David", "1", "david@email.com", "Office 777");
+            expect(employee instanceof Manager).toBeTruthy();
+        })
         it("Should have properites of name, id, email, the manager role and office number.", () => {
             const employee = new Manager("David", "1", "david@email.com", "Office 777");
             expect(employee.name).toEqual("David");

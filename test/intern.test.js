@@ -2,6 +2,10 @@ const Intern = require("../lib/intern.js");
 
 describe("Intern", () => {
     describe("Intern Class Properties and Methods", () => {
+        it("Should be an instance of the Intern class when initialized with new.", () => {
+            const employee = new Intern("David", "1", "david@email.com", "Awesome University");
+            expect(employee instanceof Intern).toBeTruthy();
+        })
         it("Should have properites of name, id, email, the intern role, and school name.", () => {
             const employee = new Intern("David", "1", "david@email.com", "Awesome University");
             expect(employee.name).toEqual("David");
