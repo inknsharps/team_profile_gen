@@ -13,9 +13,9 @@ const htmlTemplate = `
     <title>My Team</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <h1>My Team</h1>
-    </nav class="navbar navbar-expand-lg navbar-light bg-light">
+    </nav>
     <main>
         <div class="main-container">
           ${content}

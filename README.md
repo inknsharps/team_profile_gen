@@ -24,7 +24,7 @@ Once installed, you can run the program by navigating to the repository folder i
 
 You will then be prompted in the command line for all the info about the employees you are planning to add. Once you are finished with the prompts, it will generate a HTML and CSS file under the `./dist/` folder with all your employees and their respective information.
 
-A video demonstration of the application can be found [here](https://youtu.be/brpDu7tZ3Hg).
+A video demonstration of the application can be found [here](https://youtu.be/XdXmYsChkkA).
 
 ## Tests
 
