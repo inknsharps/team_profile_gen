@@ -40,7 +40,7 @@ const cardTemplate = `
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${id}</li>
-    <li class="list-group-item">${email}</li>
+    <li class="list-group-item">${email}</a></li>
     <li class="list-group-item">${info}</li>
   </ul>
 </div>

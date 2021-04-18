@@ -99,13 +99,13 @@ async function askGeneral(){
                 for (const index of employeeObjects){
                     switch (index.role){
                         case "Manager":
-                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: ${index.email}`, `Office: ${index.officeNumber}`));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: <a href="mailto:${index.email}">${index.email}</a>`, `Office: ${index.officeNumber}`));
                             break;
                         case "Engineer":
-                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: ${index.email}`, `GitHub: ${index.github}`));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: <a href="mailto:${index.email}">${index.email}</a>`, `GitHub: <a href="https://github.com/${index.github}">${index.github}</a>`));
                             break;
                         case "Intern":
-                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: ${index.email}`, `School: ${index.school}`));
+                            employeeCards.push(htmlTemplates.renderTeamCards(index.name, index.role, `ID: ${index.id}`, `Email: <a href="mailto:${index.email}">${index.email}</a>`, `School: ${index.school}`));
                             break;
                     }
                 }
